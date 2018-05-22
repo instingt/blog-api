@@ -21,4 +21,10 @@ class Post(models.Model):
         db_table = 'posts'
         verbose_name = _('Пост')
         verbose_name_plural = _('Посты')
-        ordering = ('-published_at',)
+        ordering = ('-created_at',)
+
+
+class Image(models.Model):
+    name = models.CharField(max_length=255, null=False, blank=False, verbose_name=_('Название'))
+    image = models.ImageField(upload_to='images/', verbose_name=_('Картинка'))
+    upload_date = models.DateTimeField(null=False, blank=False, verbose_name=_('Дата загрузки'), auto_now_add=True)
